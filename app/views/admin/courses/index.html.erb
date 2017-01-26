@@ -1,0 +1,102 @@
+<div class="page-header">
+  <h1 class="thin main_title">List of all courses</h1>
+</div>
+
+<nav class="navbar" role="navigation">
+  <%= link_to 'Create a new courses', new_admin_course_url, :class => 'btn btn-primary navbar-btn' %>
+
+  <%= link_to 'Refine search', 'javascript:manageSearchPanel();', :class => "btn btn-default navbar-btn" %>
+
+  <div class="panel-body hidden" id="searh_panel">
+		<%= simple_form_for @search,
+    			url:     admin_courses_path,
+    			html: {
+    				method:     :get,
+    				id:         'courses_search_form',
+    				novalidate: true,
+    				class:      'form-horizontal form-sm'
+    			} do |f| %>
+
+			<fieldset>
+				<legend class="legend-sm">Direct search</legend>
+
+				<%= f.input :id_eq, :label => "Resource", input_html: { class: 'form-control' } %>
+
+				<%#= f.input :title_cont, :label => "Title", input_html: { class: 'form-control' } %>
+
+			</fieldset>
+
+			<!-- <fieldset ng-init="user_role = '<%= params[:search][:with_role_ap] if params[:search].present? %>';">
+				<legend class="legend-sm">Advanced filters</legend>
+
+				<%#= f.input :with_role_ap, :collection => User::ROLES, :label => "Role is", :value => ((params[:search] != nil) ? params[:search][:with_role_ap] : ""), :"input_html" => {:"ng-model" => "user_role"} %>
+
+				<%#= f.input :content_category_id_eq,
+							:label => "Content category",
+							:input_html =>
+								{
+									:"data-tokens" => "/manage/content_categories.json",
+									:"data-t-placeholder" => "Search for category",
+									:"data-pre" => Manage::FormsHelper::generate_data_pre(:content_category_id_eq => params[:search], :model => ContentCategory)
+								} %>
+
+
+				<%#= f.hidden_field :created_at_gte %>
+				<%#= f.hidden_field :created_at_lte %>
+
+			</fieldset> -->
+			<%= f.button :button, 'Filter results' ,:class => "btn btn-default pull-right" %>
+
+		<% end %>
+	</div>
+</nav>
+
+<table class="table table-striped table-bordered table-fixedhead">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Rating</td>
+            <td>Difficulty</td>
+            <td>Category</td>
+            <td>Sub Category</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @courses.each do |course| %>
+        <tr>
+            <td>
+                <%= course.id %>
+            </td>
+
+            <td>
+                <%= course.name %>
+            </td>
+
+            <td>
+                <%= course.rating %>
+            </td>
+
+            <td>
+                <%= course.difficulty %>
+            </td>
+
+            <td>
+                <%= course.category_id %>
+            </td>
+
+            <td>
+                <%= course.sub_category_id %>
+            </td>
+
+            <td>
+                <%#= render partial: 'admin/shared/form_actions', locals: {object: course} %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= paginate @resources %>

@@ -1,0 +1,16 @@
+.navbar {
+    margin: 0;
+
+    @media (min-width: $grid-float-breakpoint) {
+        border-radius: 0;
+    }
+}
+
+.navbar-brand {
+    padding: $navbar-custom_padding-vertical $navbar-custom_padding-horizontal;
+}
+
+.navbar-default {
+    background-color:   $navbar-default_custom-bg;
+    border-color:       $navbar-default_custom-border;
+}

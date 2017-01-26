@@ -1,0 +1,24 @@
+<div class="panel panel-default" style="width: 260px; position: fixed">
+    <div class="panel-heading">
+        <h3 class="panel-title">Course</h3>
+    </div>
+
+    <div class="panel-body" style="overflow-y:auto">
+        <fieldset>
+            <legend class="legend-sl" style="font-size: 18px; margin-bottom: 10px">Info</legend>
+
+            <div>Status: <strong style="margin-left: 34px;"><%= @resource.status || '---' %></strong></div>
+
+            <div>Creatend at: <strong><%= date(@resource.created_at) %></strong></div>
+            <div>Updated at:  <strong style="margin-left: 3px;"><%= date(@resource.updated_at) %></strong></div>
+        </fieldset>
+
+        <fieldset class="margin_top">
+            <legend class="legend-sl" style="font-size: 18px; margin-bottom: 10px">Commands</legend>
+            <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+            <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+            <button class="btn btn-danger" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+        </fieldset>
+    </div>
+</div>

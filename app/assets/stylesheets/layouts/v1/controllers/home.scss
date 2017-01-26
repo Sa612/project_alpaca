@@ -1,0 +1,53 @@
+@import "../../../helpers";
+
+body{
+    background:                 url('/assets/home/default_image.png') no-repeat center center fixed;
+    -webkit-background-size:    cover;
+    -moz-background-size:       cover;
+    -o-background-size:         cover;
+    background-size:            cover;
+}
+
+#home_conteiner{
+    #form_conteiner{
+        padding-top: 180px;
+
+        /* Medium devices (desktops, 992px and up) */
+        @media (max-width: 992px) { padding-top: 100px; }
+
+        @media (max-width: 768px) {
+            padding-top: 20px;
+        }
+
+        h1{
+            font-size:      80px;
+            font-family:    adrift;
+            color:          #081E46;
+
+            @media (max-width: 768px) {
+                font-size: 60px;
+            }
+        }
+
+        form{
+            input[type='text'], select{
+                height:             40px;
+                font-family:        roboto;
+                background-color:   white;
+                border:             1px solid #081E46;
+            }
+
+            button.btn{
+                height:     40px;
+            }
+        }
+    }
+
+    ul#social_list{
+        margin-top: 50px;
+
+        li{ display: inline-block; margin-left: 10px;}
+
+
+    }
+}

@@ -1,0 +1,120 @@
+
+$default_px_blocks: "half"		5px,
+					"default" 	10px,
+					"double" 	20px,
+					"triple" 	30px;
+
+// Remove margin
+.no_margin{
+	margin: 0 !important;
+}
+
+// Remove Padding
+.no_padding{
+	padding: 0 !important;
+}
+
+
+// $base_unit: 10px;
+@each $direction in 'top', 'left', 'right', 'bottom' {
+	// No padding from direction
+	.no_padding_#{$direction} { padding-#{$direction}: 0 !important }
+	// No margin from direction
+	.no_margin_#{$direction} { margin-#{$direction}: 0 !important }
+
+	.border_#{$direction} {
+		border-#{$direction}: 	1px solid black;
+		padding-#{$direction}: 	10px;
+	 }
+
+	// For each size defined
+	@each $size in $default_px_blocks {
+		// Build the prefix
+		$prefix: nth($size, 1) + '_';
+		$px_size: nth($size, 2);
+		// If the size is called default don't add a pre prefix
+		@if $prefix == 'default_' {
+			$prefix: '';
+		}
+
+		// Build a class like .double_margin_top (margin top of 20px) | .margin_top (margin top of 10px)
+		.#{$prefix}margin_#{$direction}, .wrapper1080 .main_content .#{$prefix}margin_#{$direction} {
+			margin-#{$direction}: $px_size;
+		}
+
+		// Build a class like .double_margin_top (margin top of 20px) | .margin_top (margin top of 10px)
+		.#{$prefix}padding_#{$direction}, .wrapper1080 .main_content .#{$prefix}padding_#{$direction}{
+			padding-#{$direction}: $px_size;
+		}
+	}
+}
+
+// For each size defined
+@each $size in $default_px_blocks {
+	// Build the prefix
+	$prefix: nth($size, 1) + '_';
+	$px_size: nth($size, 2);
+	// If the size is called default don't add a pre prefix
+	@if $prefix == 'default_' {
+		$prefix: '';
+	}
+
+	// Build a class like .double_margin_top (margin top of 20px) | .margin_top (margin top of 10px)
+	.#{$prefix}margin{
+		margin: $px_size;
+	}
+
+	// Build a class like .double_margin_top (margin top of 20px) | .margin_top (margin top of 10px)
+	.#{$prefix}padding{
+		padding: $px_size;
+	}
+}
+
+
+// Align text at will :D
+@each $text_direction in 'left', 'center', 'right' {
+	.text_#{$text_direction} {
+		text-align: #{$text_direction};
+	}
+	.text_align_#{$text_direction} {
+		text-align: #{$text_direction};
+	}
+}
+
+.no_borders {
+	border: none !important;
+}
+
+.full_width { width: 100% }
+.full_height { height: 100% }
+
+.float_right { float: right }
+.float_left { float: left }
+
+
+// Simple class to hide elements
+.hidden {
+	display: none !important;
+}
+
+.position_relative {
+	position: relative;
+}
+
+.bordered {
+	border: 1px solid whitesmoke;
+}
+
+@mixin border_radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-khtml-border-radius: $radius;
+	-o-border-radius: $radius;
+	border-radius: $radius;
+}
+
+.border_rounded {
+	@include border_radius(5px);
+}
+
+.underlined { text-decoration: underline }

@@ -1,0 +1,10 @@
+<form action="/admin/dashboards" method="GET">
+    <div class="form-group">
+        <label for="search">Search bar:</label>
+        <input type="text" class="form-control" id="search" name="key" placeholder="Search a string" value="<%= params[:key] %>">
+    </div>
+</form>
+
+<span>
+    <%= @worked_str %>
+</span>

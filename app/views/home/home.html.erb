@@ -1,0 +1,56 @@
+<div id="home_conteiner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1 hidden-sm hidden-xs">
+                <ul id="social_list" class="list-unstyled">
+                    <li>
+                        <%= image_tag asset_path('social/36px/facebook_icon_dark_blue') %>
+                    </li>
+
+                    <li class="margin_top">
+                        <%= image_tag asset_path('social/36px/twitter_icon_dark_blue') %>
+                    </li>
+
+                    <li class="margin_top">
+                        <%= image_tag asset_path('social/36px/linkedin_icon_dark_blue') %>
+                    </li>
+
+                    <li class="margin_top">
+                        <%= image_tag asset_path('social/36px/instagram_icon_dark_blue') %>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="form_conteiner" class="col-md-10">
+                <h1 class="text-center">la tua passione trasformata in valore</h1>
+                <form method="GET">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Cosa stai cercando?">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5 col-sm-6 form-group">
+                            <select class="full_width" name="difficulty">
+                                <option value="">Seleziona la difficoltà</option>
+                                <option value="1">Facile</option>
+                                <option value="2">Media</option>
+                                <option value="3">Difficile</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-5 col-sm-6 form-group">
+                            <input id="select_city" type="text" class="form-control" placeholder="Seleziona la città">
+                        </div>
+
+                        <div class="col-md-2 col-sm-12 form-group">
+                            <button class="btn btn-warning full_width" type="submit">Cerca</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<%= render partial: 'footer' %>

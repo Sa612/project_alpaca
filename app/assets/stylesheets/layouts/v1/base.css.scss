@@ -1,0 +1,21 @@
+//
+// BASE CSS IMPORTS
+//
+    // Bootstrap customized rules
+    @import "customized_bootstrap/bootstrap";
+
+    // Base css variables
+    @import "variables";
+
+    // Footer css rules
+    @import "footer";
+
+    // Social icons styles
+    @import "social_icons";
+
+//
+// BASE CSS RULES
+//
+body{
+    background-color: $body-default-bg;
+}

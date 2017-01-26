@@ -1,0 +1,90 @@
+<div class="page-header">
+  <h1 class="thin main_title">List of all words</h1>
+</div>
+
+<nav class="navbar" role="navigation">
+  <%= link_to 'Create a new words', new_admin_word_url, :class => 'btn btn-primary navbar-btn' %>
+
+  <%= link_to 'Refine search', 'javascript:manageSearchPanel();', :class => "btn btn-default navbar-btn" %>
+
+  <div class="panel-body hidden" id="searh_panel">
+		<%= simple_form_for @search,
+    			url:     admin_words_path,
+    			html: {
+    				method:     :get,
+    				id:         'words_search_form',
+    				novalidate: true,
+    				class:      'form-horizontal form-sm'
+    			} do |f| %>
+
+			<fieldset>
+				<legend class="legend-sm">Direct search</legend>
+
+				<%= f.input :id_eq, :label => "ID", input_html: { class: 'form-control' } %>
+
+				<%= f.input :value_cont, :label => "Value", input_html: { class: 'form-control' } %>
+
+				<%= f.input :status, :label => "Status", input_html: { class: 'form-control' } %>
+			</fieldset>
+
+			<!-- <fieldset ng-init="user_role = '<%= params[:search][:with_role_ap] if params[:search].present? %>';">
+				<legend class="legend-sm">Advanced filters</legend>
+
+				<%#= f.input :with_role_ap, :collection => User::ROLES, :label => "Role is", :value => ((params[:search] != nil) ? params[:search][:with_role_ap] : ""), :"input_html" => {:"ng-model" => "user_role"} %>
+
+				<%#= f.input :content_category_id_eq,
+							:label => "Content category",
+							:input_html =>
+								{
+									:"data-tokens" => "/manage/content_categories.json",
+									:"data-t-placeholder" => "Search for category",
+									:"data-pre" => Manage::FormsHelper::generate_data_pre(:content_category_id_eq => params[:search], :model => ContentCategory)
+								} %>
+
+
+				<%#= f.hidden_field :created_at_gte %>
+				<%#= f.hidden_field :created_at_lte %>
+
+			</fieldset> -->
+			<%= f.button :button, 'Filter results' ,:class => "btn btn-default pull-right" %>
+
+		<% end %>
+	</div>
+</nav>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-fixedhead">
+        <thead>
+            <tr>
+                <td style="width: 30px">#</td>
+                <td>ID</td>
+                <td>Value</td>
+                <td>Status</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @words.each do |word| %>
+            <tr>
+                <td>
+                    <input type="checkbox" name="name" value="">
+                </td>
+
+                <td>
+                    <%= word.id %>
+                </td>
+
+                <td>
+                    <%= word.value %>
+                </td>
+
+                <td>
+                    <%= admin_word_status_lbl(word.status) %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+
+<%= paginate @resources %>

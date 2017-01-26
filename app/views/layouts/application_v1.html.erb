@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Project Alpaca</title>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+        <%= stylesheet_link_tag assets_application_v1(params[:controller]) %>
+
+        <%= csrf_meta_tags %>
+    </head>
+
+    <body>
+        <%#= render partial: partial_application_v1('navbar') %>
+
+        <!-- <div class="container"> -->
+        <div>
+            <%= yield %>
+        </div>
+
+        <%#= render partial: partial_application_v1('footer') %>
+    </body>
+</html>
